@@ -20,14 +20,14 @@ public class CustomerController {
 
     @GetMapping("/{customer-id}")
     public ResponseEntity<CustomerResponse> findById(
-            @PathVariable String customerId
+            @PathVariable("customer-id") String customerId
     ) {
         return ResponseEntity.ok(service.findById(customerId));
     }
 
     @GetMapping("/exists/{customer-id}")
     public ResponseEntity<Boolean> existsById(
-            @PathVariable String customerId
+            @PathVariable("customer-id") String customerId
     ) {
         return ResponseEntity.ok(service.existsById(customerId));
     }
@@ -50,7 +50,7 @@ public class CustomerController {
 
     @DeleteMapping("/{customer-id}")
     public ResponseEntity<?> deleteCustomer(
-            @PathVariable String customerId
+            @PathVariable("customer-id") String customerId
     ){
         service.deleteCustomer(customerId);
         return ResponseEntity.ok().build();
